@@ -117,8 +117,6 @@ def start_game():
 
     print(f"Quiz completed. Your score is {score} out of {len(questions)}.")
 
-
-
 def main():
     print("Welcome to Lord of the Rings Quiz!")
     display_welcome_message()
@@ -130,18 +128,18 @@ def main():
         if existing_user == "no":
             print("Please register to continue.")
             print("Enter a username:")
-            username = input()
+            username = input("> ")  # Displaying the username prompt differently
             print("Enter a password:")
-            password = input()
+            password = input("> ")  # Displaying the password prompt differently
             if register(username, password):
                 print("Registration successful. Starting the game...")
                 start_game()
                 break  # Exit the loop if registration is successful
         elif existing_user == "yes":
             print("Enter your username:")
-            username = input()
+            username = input("> ")  # Displaying the username prompt differently
             print("Enter your password:")
-            password = input()
+            password = input("> ")  # Displaying the password prompt differently
             if login(username, password):
                 print("Login successful. Starting the game...")
                 start_game()
