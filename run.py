@@ -13,13 +13,18 @@ SCOPE = [
     "https://www.googleapis.com/auth/drive"
     ]
 
-creds_json = os.environ.get('CREDS')
-CREDS = json.loads(creds_json)
 
+creds_json = os.environ.get('CREDS')
+
+CREDS = Credentials.from_service_account_info(json.loads(creds_json))
 
 SCOPED_CREDS = CREDS.with_scopes(SCOPE)
+
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
+
 SHEET = GSPREAD_CLIENT.open('LordOfTheRings')
+
+
 
 auth_sheet = SHEET.worksheet('Auth')
 
