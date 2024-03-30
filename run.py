@@ -232,31 +232,27 @@ def start_game():
 def main():
     print("Welcome to Lord of the Rings Quiz!")
     display_welcome_message()
-    
-    while True:  # Loop indefinitely until a successful login or registration
-        print("Are you an existing user? (yes/no)")
-        existing_user = input("> ")
-        
-        if existing_user == "no":
-            print("Please register to continue.")
-            print("Enter a username:")
-            username = input("> ")
-            print("Enter a password:")
-            password = input("> ")
-            if register(username, password):
-                print("Registration successful. Starting the game...")
-                start_game()
-                break  # Exit the loop if registration is successful
-        elif existing_user == "yes":
-            print("Enter your username:")
-            username = input("> ") 
-            print("Enter your password:")
-            password = input("> ") 
-            if login(username, password):
-                print("Login successful. Starting the game...")
-                start_game()
-                break  # Exit the loop if login is successful
-        else:
-            print("Invalid input. Please enter 'yes' or 'no'.")
+    print("Are you an existing user? (yes/no)")
+    existing_user = input("> ")
+
+    if existing_user == "no":
+        print("Please register to continue.")
+        print("Enter a username:")
+        username = input("> ")
+        print("Enter a password:")
+        password = input("> ")
+        if register(username, password):
+            print("Registration successful. Starting the game...")
+            start_game()
+    elif existing_user == "yes":
+        print("Enter your username:")
+        username = input("> ")
+        print("Enter your password:")
+        password = input("> ")
+        if login(username, password):
+            print("Login successful. Starting the game...")
+            start_game()
+    else:
+        print("Invalid input. Please enter 'yes' or 'no'.")
 
 main()
