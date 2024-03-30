@@ -238,18 +238,18 @@ def main():
         if existing_user == "no":
             print("Please register to continue.")
             print("Enter a username:")
-            username = input("> ")  # Displaying the username prompt differently
+            username = input("> ")  
             print("Enter a password:")
-            password = input("> ")  # Displaying the password prompt differently
+            password = input("> ") 
             if register(username, password):
                 print("Registration successful. Starting the game...")
                 start_game()
                 break  # Exit the loop if registration is successful
         elif existing_user == "yes":
             print("Enter your username:")
-            username = input("> ")  # Displaying the username prompt differently
+            username = input("> ") 
             print("Enter your password:")
-            password = input("> ")  # Displaying the password prompt differently
+            password = input("> ") 
             if login(username, password):
                 print("Login successful. Starting the game...")
                 start_game()
