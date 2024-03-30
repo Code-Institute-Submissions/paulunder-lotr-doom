@@ -21,7 +21,6 @@ pandas @ git+https://github.com/pandas-dev/pandas.git@23f74d3f57cba84cdec677e68f
 Pillow==9.4.0
 pyasn1==0.5.1
 pyasn1-modules==0.3.0
-pycairo @ file:///private/tmp/py3cairo-20231212-34764-2s1lkr/pycairo-1.25.1
 PyGObject==3.46.0
 pyparsing==3.0.9
 PySimpleGUI==4.60.4
