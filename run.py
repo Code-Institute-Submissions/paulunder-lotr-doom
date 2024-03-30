@@ -233,14 +233,14 @@ def main():
     
     while True:  # Loop indefinitely until a successful login or registration
         print("Are you an existing user? (yes/no)")
-        existing_user = input().lower()
+        existing_user = input("> ")
         
         if existing_user == "no":
             print("Please register to continue.")
             print("Enter a username:")
-            username = input("> ")  
+            username = input("> ")
             print("Enter a password:")
-            password = input("> ") 
+            password = input("> ")
             if register(username, password):
                 print("Registration successful. Starting the game...")
                 start_game()
