@@ -6,6 +6,8 @@ import gspread
 from google.oauth2.service_account import Credentials
 import json
 import os
+from colorama import Fore
+
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -233,7 +235,7 @@ def main():
     
     while True:  # Loop indefinitely until a successful login or registration
         print("Are you an existing user? (yes/no)")
-        existing_user = input("> ")
+        existing_user = input(f"{Fore.CYAN}\nEnter New Username:\n")
         
         if existing_user == "no":
             print("Please register to continue.")
