@@ -1,0 +1,115 @@
+{
+    "paths": [
+      {
+        "id": 1,
+        "description": "The Path of the Ring: Choose this path if you decide to secretly wear the One Ring and let its influence affect your decisions.",
+        "start": "Frodo Baggins, a humble hobbit living in the serene Shire, discovers that he is the bearer of the One Ring, a powerful artifact sought by the Dark Lord Sauron. Feeling the weight of responsibility, Frodo sets out on a perilous journey to Mount Doom, the only place where the Ring can be destroyed.",
+        "questions": [1, 2, 3, 4, 5, 6, 7, 8]
+      },
+      {
+        "id": 2,
+        "description": "The Path of Fellowship: Frodo Baggins, accompanied by his loyal friend Samwise Gamgee and guided by the wisdom of Gandalf the Grey, embarks on a quest to destroy the One Ring. Along the way, they join forces with a diverse fellowship consisting of elves, dwarves, men, and other creatures of Middle-earth.",
+        "start": "Frodo Baggins, accompanied by his loyal friend Samwise Gamgee and guided by the wisdom of Gandalf the Grey, embarks on a quest to destroy the One Ring. Along the way, they join forces with a diverse fellowship consisting of elves, dwarves, men, and other creatures of Middle-earth.",
+        "questions": [9, 10, 11, 12, 13, 14, 15, 16]
+      }
+    ],
+    "questions": [
+      {
+        "id": 1,
+        "question": "As you set out from the Auenland, the One Ring whispers in your mind: 'Reveal your secret to Samwise and claim his loyalty.' What do you do?",
+        "options": ["a. Ignore the Ring's suggestion and remain silent about the Ring.", "b. Reveal your secret to Samwise."],
+        "correct_answer": "a"
+      },
+      {
+        "id": 2,
+        "question": "While crossing the Dead Marshes, you feel a strong desire to keep moving despite warning signs. The Ring says: 'Ignore the warnings and continue on.' What do you decide?",
+        "options": ["a. Heed the warnings and turn back.", "b. Obey the Ring's command and press forward."],
+        "correct_answer": "a"
+      },
+      {
+        "id": 3,
+        "question": "In Lothlorien, Galadriel offers the Ring to be destroyed in her flame. The Ring urges: 'Refuse Galadriel's offer and seize her power instead.' What do you choose?",
+        "options": ["a. Decline Galadriel's offer and attempt to gain her strength.", "b. Accept her generosity and allow her to destroy the Ring."],
+        "correct_answer": "b"
+      },
+      {
+        "id": 4,
+        "question": "As you journey through the Moria Mine, the Ring demands: 'Take the Mithril to enrich yourself instead of sharing it with the Dwarves.' What do you decide?",
+        "options": ["a. Refrain from taking the Mithril and respect the Dwarves' possessions.", "b. Disregard your companions' feelings and keep the valuable metal for yourself."],
+        "correct_answer": "a"
+      },
+      {
+        "id": 5,
+        "question": "In the Chamber of Mazarbul, you must choose a path to safety. The Ring tells you: 'Lead your companions into danger by choosing the left passage.' What do you choose?",
+        "options": ["a. Ignore the Ring's suggestion and take the right passage.", "b. Follow the Ring's guidance and go down the left passage."],
+        "correct_answer": "a"
+      },
+      {
+        "id": 6,
+        "question": "On Weathermere, you are approached by the Mouth of Sauron, who offers to spare your life if you hand over the Ring. The Ring whispers: 'Accept his offer and betray your friends.' What do you do?",
+        "options": ["a. Reject the Mouth's proposal and remain loyal to your fellowship.", "b. Abandon your companions and take the easy way out by surrendering the Ring."],
+        "correct_answer": "a"
+      },
+      {
+        "id": 7,
+        "question": "In Moria, the Ring urges: 'Confront the Balrog alone and prove your greatness.' What do you decide?",
+        "options": ["a. Defy the Ring's command and stay with your companions.", "b. Obey the Ring's guidance and face the Balrog by yourself."],
+        "correct_answer": "a"
+      },
+      {
+        "id": 8,
+        "question": "As you near Mount Doom, the Ring pleads: 'Cast it from the peak and claim your power.' What do you choose to do?",
+        "options": ["a. Defy the Ring's command and carry it safely to Destroyer.", "b. Give in to the Ring's influence and attempt to wield its power."],
+        "correct_answer": "a"
+      },
+      {
+        "id": 9,
+        "question": "As you set out from the Auenland, Samwise advises: 'Remain open about your burden and rely on our companionship.' You decide to:",
+        "options": ["a. Listen to Samwise and be honest with your fellowship.", "b. Keep the Ring a secret and ignore Samwise's counsel."],
+        "correct_answer": "a"
+      },
+      {
+        "id": 10,
+        "question": "In Lothlorien, Galadriel presents you with the choice to destroy the Ring in her flame. What do you choose?",
+        "options": ["a. Accept her offer and destroy the Ring.", "b. Decline her offer and continue the journey."],
+        "correct_answer": "a"
+      },
+      {
+        "id": 11,
+        "question": "In Moria, you find Mithril. What do you choose to do?",
+        "options": ["a. Share the Mithril with the Dwarves, valuing their friendship over personal gain.", "b. Keep the Mithril for yourself."],
+        "correct_answer": "a"
+      },
+      {
+        "id": 12,
+        "question": "In the Chamber of Mazarbul, you must choose a path. What do you choose?",
+        "options": ["a. Lead your companions down the right passage to safety.", "b. Lead your companions down the left passage into danger."],
+        "correct_answer": "a"
+      },
+      {
+        "id": 13,
+        "question": "On Weathermere, the Mouth of Sauron offers to spare your life if you hand over the Ring. What do you do?",
+        "options": ["a. Reject the offer and remain loyal to your fellowship.", "b. Accept the offer and betray your fellowship."],
+        "correct_answer": "a"
+      },
+      {
+        "id": 14,
+        "question": "In Moria, you encounter a Balrog. What do you choose to do?",
+        "options": ["a. Face the Balrog alongside your companions.", "b. Confront the Balrog alone."],
+        "correct_answer": "a"
+      },
+      {
+        "id": 15,
+        "question": "When confronting the Balrog, what do you choose to do?",
+        "options": ["a. Stay with your fellowship, refusing to give in to the Ring's influence.", "b. Give in to the Ring's influence and attempt to confront the Balrog alone."],
+        "correct_answer": "a"
+      },
+      {
+        "id": 16,
+        "question": "As you near Mount Doom, what do you choose to do?",
+        "options": ["a. Resist the Ring's temptation and carry it safely to Destroyer.", "b. Give in to the Ring's influence and attempt to claim its power."],
+        "correct_answer": "a"
+      }
+    ]
+  }
+  

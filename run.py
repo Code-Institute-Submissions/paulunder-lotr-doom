@@ -1,8 +1,10 @@
 # Write your code to expect a terminal of 80 characters wide and 24 rows high
 
 
+import random
 import gspread
 from google.oauth2.service_account import Credentials
+import json
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -96,26 +98,126 @@ def display_welcome_message():
         """
     print(welcome_message)
 
+def display_mordor():
+    mordor_message = """
+                        
+                       /\\
+        _/\           /  \\
+    _  /   \         /    \/\\
+   / \/   _ \     /\/\  _  _/\\
+  /   \_ / \/\_/\/_/  \/ \/   \\
+ /\/\   \_   /   \/            \\
+/    \___/\ /     \             \\
+           \       \             \\
+           .-"---.  \             \\
+__..---.. /       \  \             \\
+         /\___.-'./\''--..____..--''
+`-.      \/ O) (O \/ ''--.._
+    __    |  (_)  |         _.-'-._
+   / /  __/\\\___//\__ ..--''-._
+   | (_/\ \/`---'\/ /\         `-._
+_.-\ \/  \  \   /  /  \.-'-._
+   /\|   /  -| |-  \   \     `-._
+
+        """
+    print(mordor_message)
+
+def display_winning_message():
+    winning_message = """
+                    . .:.:.:.:. .:\     /:. .:.:.:.:. ,
+               .-._  `..:.:. . .:.:`- -':.:. . .:.:.,'  _.-.
+              .:.:.`-._`-._..-''_...---..._``-.._.-'_.-'.:.:.
+           .:.:. . .:_.`' _..-''._________,``-.._ `.._:. . .:.:.
+        .:.:. . . ,-'_.-''      ||_-(O)-_||      ``-._`-. . . .:.:.
+       .:. . . .,'_.'           '---------'           `._`.. . . .:.
+     :.:. . . ,','               _________               `.`. . . .:.:
+    `.:.:. .,','            _.-''_________``-._            `._.     _.'
+  -._  `._./ /            ,'_.-'' ,       ``-._`.          ,' '`:..'  _.-
+ .:.:`-.._' /           ,','                   `.`.       /'  '  \\.-':.:.
+ :.:. . ./ /          ,','               ,       `.`.    / '  '  '\\. .:.:
+:.:. . ./ /          / /    ,                      \ \  :  '  '  ' \\. .:.:
+.:. . ./ /          / /            ,          ,     \ \ :  '  '  ' '::. .:.
+:. . .: :    o     / /                               \ ;'  '  '  ' ':: . .:
+.:. . | |   /_\   : :     ,                      ,    : '  '  '  ' ' :: .:.
+:. . .| |  ((<))  | |,          ,       ,             |\'__',-._.' ' ||. .:
+.:.:. | |   `-'   | |---....____                      | ,---\/--/  ' ||:.:.
+------| |         : :    ,.     ```--..._   ,         |''  '  '  ' ' ||----
+_...--. |  ,       \ \             ,.    `-._     ,  /: '  '  '  ' ' ;;..._
+:.:. .| | -O-       \ \    ,.                `._    / /:'  '  '  ' ':: .:.:
+.:. . | |_(`__       \ \                        `. / / :'  '  '  ' ';;. .:.
+:. . .<' (_)  `>      `.`.          ,.    ,.     ,','   \  '  '  ' ;;. . .:
+.:. . |):-.--'(         `.`-._  ,.           _,-','      \ '  '  '//| . .:.
+:. . .;)()(__)(___________`-._`-.._______..-'_.-'_________\'  '  //_:. . .:
+.:.:,' \/\/--\/--------------------------------------------`._',;'`. `.:.:.
+:.,' ,' ,'  ,'  /   /   /   ,-------------------.   \   \   \  `. `.`. `..:
+,' ,'  '   /   /   /   /   //                   \\   \   \   \   \  ` `.SSt
+,'  '    /   /   /   /   /((  Lord of the Rings  ))\   \   \   \   \   `  `
+
+        """ 
+    print(winning_message)
+
 
 def start_game():
-    print("Starting your journey...")
-    questions = quiz_sheet.get_all_records()
-    score = 0
+    while True:
+        print("Starting your journey...")
+        # Load the story from the JSON file
+        with open('story.json', 'r') as file:
+            story = json.load(file)
+        
+        paths = story['paths']
+        
+        # Select a random path
+        selected_path = random.choice(paths)
+        
+        print(selected_path['start'])
+        
+        questions = story['questions']
+        score = 0  # Initialize the score
+        
+        # Display questions based on the selected path
+        for question_id in selected_path['questions']:
+            question = [q for q in questions if q['id'] == question_id][0]
+            print(question['question'])
+            print("--------------------")
+            for option in question['options']:
+                print(option)
+            print("--------------------")
+            answer = input("> ").lower()
+            if answer == question['correct_answer']:
+                print("Well done! Your choice has led to success.")
+                print("--------------------")
+                print("You get closer to Mordor!")
+                print("--------------------")
+                display_mordor()
+                score += 1  # Increment the score for correct answers
+            else:
+                print("Oops! Your choice has led to a setback.")
+                print("You took the wrong path. Would you like to restart the game? (yes/no)")
+                restart_choice = input("> ").lower()
+                if restart_choice == 'yes':
+                    break  # Break out of the loop and restart the game
+                else:
+                    print("Thank you for playing!")
+                    return  # End the game if the player chooses not to restart
+        
+        if score == len(selected_path['questions']):
+            print("Congratulations! You have successfully completed the journey.")
+            if score > 6:
+                print("\nYou have saved Middle Earth!\n")
+                display_winning_message()
+            else:
+                print("Middle Earth is burning. You lose.")
+            
+            print("\nWould you like to play again? (yes/no)\n")
+            play_again = input("> ").lower()
+            if play_again != 'yes':
+                print("Thank you for playing!")
+                break
 
-    for question in questions:
-        print(question['Question'])
-        print("Options:")
-        for i in range(1, 5):
-            print(f"{i}. {question[f'Option {i}']}")
+            print(f"Your final score is: {score}/{len(selected_path['questions'])}")
+            break  
 
-        answer = int(input("Enter your answer (1-4): "))
-        if answer == int(question['Answer']):
-            print("Correct!")
-            score += 1
-        else:
-            print("Incorrect!")
 
-    print(f"Quiz completed. Your score is {score} out of {len(questions)}.")
 
 def main():
     print("Welcome to Lord of the Rings Quiz!")
