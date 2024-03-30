@@ -235,7 +235,7 @@ def main():
     
     while True:  # Loop indefinitely until a successful login or registration
         print("Are you an existing user? (yes/no)")
-        existing_user = input(f"{Fore.CYAN}\nEnter New Username:\n")
+        existing_user = input("> ")
         
         if existing_user == "no":
             print("Please register to continue.")
