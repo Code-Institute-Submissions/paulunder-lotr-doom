@@ -233,7 +233,11 @@ def main():
     print("Welcome to Lord of the Rings Quiz!")
     display_welcome_message()
     print("Are you an existing user? (yes/no)")
-    existing_user = input("\n> \n")
+    try:
+        existing_user = input("> ")
+    except ValueError:
+        print("Invalid input. Please enter 'yes' or 'no'.")
+        return
 
     if existing_user == "no":
         print("Please register to continue.")
