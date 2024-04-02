@@ -249,7 +249,8 @@ def start_game():
                             print("Thank you for playing!")
                             return
                     else:
-                        print("Invalid input. Please enter 'yes' or 'no'.")
+                        print("Invalid input.")
+                        print("\n\n restarting game...")
                         break
                 if score == len(selected_path['questions']):
                     print("\nCongratulations! You have successfully completed the journey.")
