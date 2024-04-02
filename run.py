@@ -42,7 +42,7 @@ def register(username, password):
 
         # Add new user to the 'Auth' worksheet
         auth_sheet.append_row([username, password])
-        print("Registration successful. You can now log in.")
+        print("\nRegistration successful. You can now log in.")
         return True
     except Exception as e:
         print(f"Error during registration: {e}")
@@ -54,7 +54,7 @@ def login(username, password):
         # Find the row corresponding to the username
         usernames = auth_sheet.col_values(1)
         if username not in usernames:
-            print("Username not found. Please register first.")
+            print("\nUsername not found. Please register first.")
             return False
 
         index = usernames.index(username) + 1  # Adding 1 because indexing starts from 1 in Google Sheets
@@ -62,10 +62,10 @@ def login(username, password):
 
         # Check if the provided password matches the stored password
         if password == stored_password:
-            print("Login successful.")
+            print("\nLogin successful.")
             return True
         else:
-            print("Incorrect password.")
+            print("\nIncorrect password.")
             return False
     except Exception as e:
         print(f"Error during login: {e}")
@@ -221,7 +221,7 @@ def start_game():
                 display_mordor()
                 score += 1  # Increment the score for correct answers
             else:
-                print("Oops! Your choice has led to a setback.")
+                print("\nOops! Your choice has led to a setback.")
                 print("You took the wrong path. Would you like to restart the game? (yes/no)")
                 restart_choice = input("> ").lower()
                 if restart_choice == 'yes':
@@ -231,49 +231,54 @@ def start_game():
                     return  # End the game if the player chooses not to restart
         
         if score == len(selected_path['questions']):
-            print("Congratulations! You have successfully completed the journey.")
+            print("\nCongratulations! You have successfully completed the journey.")
             if score > 6:
                 print("\nYou have saved Middle Earth!\n")
                 display_winning_message()
             else:
-                print("Middle Earth is burning. You lose.")
+                print("\n\n\n\nMiddle Earth is burning. You lose.")
             
             print("\nWould you like to play again? (yes/no)\n")
             play_again = input("> ").lower()
             if play_again != 'yes':
-                print("Thank you for playing!")
+                print("\nThank you for playing!")
                 break
 
             print(f"Your final score is: {score}/{len(selected_path['questions'])}")
             break  
 
+def signing():
+    print("\n\nAre you an existing user? (yes/no)")
+    existing_user = input("> ")
+
+
+    if existing_user == "no":
+        print("\nPlease register to continue.")
+        print("\nEnter a username:")
+        username = input("> ")
+        print("\nEnter a password:")
+        password = input("> ")
+        if register(username, password):
+            print("\nRegistration successful. \n\nStarting the game...")
+            start_game()
+    elif existing_user == "yes":
+        print("\nEnter your username:")
+        username = input("> ")
+        print("\nEnter your password:")
+        password = input("> ")
+        if login(username, password):
+            print("\n\nLogin successful. \nStarting the game...")
+            start_game()
+    else:
+        print("\nInvalid input. Please enter 'yes' or 'no'.")
+        signing()
 
 
 def main():
     print("Welcome to Lord of the Rings Quiz!")
     display_welcome_message()
-    print("Are you an existing user? (yes/no)")
-    existing_user = input("> ")
+    signing()
 
 
-    if existing_user == "no":
-        print("Please register to continue.")
-        print("Enter a username:")
-        username = input("> ")
-        print("Enter a password:")
-        password = input("> ")
-        if register(username, password):
-            print("Registration successful. Starting the game...")
-            start_game()
-    elif existing_user == "yes":
-        print("Enter your username:")
-        username = input("> ")
-        print("Enter your password:")
-        password = input("> ")
-        if login(username, password):
-            print("Login successful. Starting the game...")
-            start_game()
-    else:
-        print("Invalid input. Please enter 'yes' or 'no'.")
 
 main()
