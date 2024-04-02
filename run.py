@@ -213,9 +213,7 @@ def start_game():
                 print(option)
             print("--------------------")
             answer = input("> ").lower()
-            if answer != 'a' or answer != 'b':
-                print("Invalid input. Please enter 'a' or 'b'.")
-            else:
+            if answer == 'a' or answer == 'b':
                 if answer == question['correct_answer']:
                     print("Well done! Your choice has led to success.")
                     print("--------------------")
@@ -232,23 +230,24 @@ def start_game():
                     else:
                         print("Thank you for playing!")
                         return  # End the game if the player chooses not to restart
-        
-        if score == len(selected_path['questions']):
-            print("\nCongratulations! You have successfully completed the journey.")
-            if score > 6:
-                print("\nYou have saved Middle Earth!\n")
-                display_winning_message()
+                if score == len(selected_path['questions']):
+                    print("\nCongratulations! You have successfully completed the journey.")
+                    if score > 6:
+                        print("\nYou have saved Middle Earth!\n")
+                        display_winning_message()
+                    else:
+                        print("\n\n\n\nMiddle Earth is burning. You lose.")
+                    
+                    print("\nWould you like to play again? (yes/no)\n")
+                    play_again = input("> ").lower()
+                    if play_again != 'yes':
+                        print("\nThank you for playing!")
+                        break
+                    print(f"Your final score is: {score}/{len(selected_path['questions'])}")
+                    break  
             else:
-                print("\n\n\n\nMiddle Earth is burning. You lose.")
-            
-            print("\nWould you like to play again? (yes/no)\n")
-            play_again = input("> ").lower()
-            if play_again != 'yes':
-                print("\nThank you for playing!")
+                print("Invalid input. Please enter 'a' or 'b'.")
                 break
-
-            print(f"Your final score is: {score}/{len(selected_path['questions'])}")
-            break  
 
 def signing():
     print("\n\nAre you an existing user? (yes/no)")
