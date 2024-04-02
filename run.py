@@ -196,8 +196,25 @@ def start_game():
         
         paths = story['paths']
         
-        # Select a random path
-        selected_path = random.choice(paths)
+        # Select a path
+        print("\nChoose a path to start your journey:")
+        print("--------------------")
+        print("1. Path of the Ring")
+        print("OR")
+        print("2. Path of the Fellowship")
+        selected_path = input("Choose a path (1/2): ")
+        if selected_path == '1' or selected_path == '2':
+            if selected_path == '1':
+                selected_path = paths[0]
+                print(selected_path['questions'])
+            else:
+                selected_path = paths[1]
+                print(selected_path['questions'])
+        else:
+            print("Invalid input. Please enter '1' or '2'.")
+            start_game()
+            break
+            
         
         print(selected_path['start'])
         
