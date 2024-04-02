@@ -242,11 +242,15 @@ def start_game():
                     print("\nOops! Your choice has led to a setback.")
                     print("You took the wrong path. Would you like to restart the game? (yes/no)")
                     restart_choice = input("> ").lower()
-                    if restart_choice == 'yes':
-                        break  # Break out of the loop and restart the gamew
+                    if restart_choice == 'yes' or restart_choice == 'no':
+                        if restart_choice == 'yes':
+                            break  # Break out of the loop and restart the gamew
+                        else:
+                            print("Thank you for playing!")
+                            return
                     else:
-                        print("Thank you for playing!")
-                        return  # End the game if the player chooses not to restart
+                        print("Invalid input. Please enter 'yes' or 'no'.")
+                        break
                 if score == len(selected_path['questions']):
                     print("\nCongratulations! You have successfully completed the journey.")
                     if score > 6:
@@ -257,11 +261,15 @@ def start_game():
                     
                     print("\nWould you like to play again? (yes/no)\n")
                     play_again = input("> ").lower()
-                    if play_again != 'yes':
-                        print("\nThank you for playing!")
+                    if play_again == 'yes' or restart_choice == 'no':
+                        if play_again != 'yes':
+                            print("\nThank you for playing!")
+                            break
+                        print(f"Your final score is: {score}/{len(selected_path['questions'])}")
+                        break  
+                    else:
+                        print("Invalid input. Please enter 'yes' or 'no'.")
                         break
-                    print(f"Your final score is: {score}/{len(selected_path['questions'])}")
-                    break  
             else:
                 print("Invalid input. Please enter 'a' or 'b'.")
                 break
