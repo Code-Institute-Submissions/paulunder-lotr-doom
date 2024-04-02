@@ -207,13 +207,17 @@ def start_game():
             if selected_path == '1':
                 selected_path = paths[0]
                 print(selected_path['questions'])
+                print(selected_path['start'])
             else:
                 selected_path = paths[1]
                 print(selected_path['questions'])
+                print(selected_path['start'])
         else:
             print("Invalid input. Please enter '1' or '2'.")
+            print("\n Restarting the game...")
             start_game()
             break
+        
             
         
         print(selected_path['start'])
