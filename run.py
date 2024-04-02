@@ -265,10 +265,11 @@ def start_game():
                         if play_again != 'yes':
                             print("\nThank you for playing!")
                             break
-                        print(f"Your final score is: {score}/{len(selected_path['questions'])}")
                         break  
                     else:
-                        print("Invalid input. Please enter 'yes' or 'no'.")
+                        print("Invalid input.")
+                        print("\n\n take you back to menu...")
+                        signing()
                         break
             else:
                 print("Invalid input. Please enter 'a' or 'b'.")
