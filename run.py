@@ -266,7 +266,12 @@ def start_game():
                         if play_again != 'yes':
                             print("\nThank you for playing!")
                             break
-                        break  
+                        else:
+                            print("\nThank you for playing!")
+                            print("\ntake you back to menu...")
+                            signing()
+                        break
+                        
                     else:
                         print("Invalid input.")
                         print("\n\n take you back to menu...")
