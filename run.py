@@ -18,6 +18,7 @@ SCOPE = [
 
 creds_json = os.environ.get('CREDS')
 
+
 CREDS = Credentials.from_service_account_info(json.loads(creds_json))
 
 SCOPED_CREDS = CREDS.with_scopes(SCOPE)
@@ -209,7 +210,6 @@ def start_game():
                 print(selected_path['questions'])
                 print(selected_path['start'])
                 questions = story['questions'][0:8]
-                question_id = selected_path['questions'][0]
             else:
                 selected_path = paths[1]
                 print(selected_path['questions'])
@@ -224,8 +224,7 @@ def start_game():
         score = 0  # Initialize the score
         
         # Display questions based on the selected path
-        for question_id in questions:
-            question = [q for q in questions if q['id'] == question_id][0]
+        for question in questions:
             print(Fore.GREEN + question['question'] + Fore.RESET)
             print("--------------------")
             for option in question['options']:
