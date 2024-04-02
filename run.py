@@ -207,7 +207,7 @@ def start_game():
         # Display questions based on the selected path
         for question_id in selected_path['questions']:
             question = [q for q in questions if q['id'] == question_id][0]
-            print(question['question'])
+            print(Fore.GREEN + question['question'] + Fore.RESET)
             print("--------------------")
             for option in question['options']:
                 print(option)
@@ -225,7 +225,7 @@ def start_game():
                 print("You took the wrong path. Would you like to restart the game? (yes/no)")
                 restart_choice = input("> ").lower()
                 if restart_choice == 'yes':
-                    break  # Break out of the loop and restart the game
+                    break  # Break out of the loop and restart the gamew
                 else:
                     print("Thank you for playing!")
                     return  # End the game if the player chooses not to restart
