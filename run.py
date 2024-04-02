@@ -8,39 +8,28 @@ import json
 import os
 from colorama import Fore
 
-
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
     "https://www.googleapis.com/auth/drive.file",
     "https://www.googleapis.com/auth/drive"
     ]
 
-
 creds_json = os.environ.get('CREDS')
-
 CREDS = Credentials.from_service_account_info(json.loads(creds_json))
-
 SCOPED_CREDS = CREDS.with_scopes(SCOPE)
-
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
-
 SHEET = GSPREAD_CLIENT.open('LordOfTheRings')
-
-
-
 auth_sheet = SHEET.worksheet('Auth')
 
-
-# Function to register a new user
 def register(username, password):
+    """
+    Function to register a new user, checks in the Google sheet if the username already exists.
+    """
     try:
-        # Check if username already exists
         usernames = auth_sheet.col_values(1)
         if username in usernames:
             print("Username already exists. Please choose a different username.")
             return False
-
-        # Add new user to the 'Auth' worksheet
         auth_sheet.append_row([username, password])
         print("\nRegistration successful. You can now log in.")
         return True
@@ -48,19 +37,17 @@ def register(username, password):
         print(f"Error during registration: {e}")
         return False
 
-# Function to authenticate a user
 def login(username, password):
+    """
+    Function to login an existing user, checks in the Google sheet if the username exists and if the password is correct.
+    """
     try:
-        # Find the row corresponding to the username
         usernames = auth_sheet.col_values(1)
         if username not in usernames:
             print("\nUsername not found. Please register first.")
             return False
-
-        index = usernames.index(username) + 1  # Adding 1 because indexing starts from 1 in Google Sheets
+        index = usernames.index(username) + 1
         stored_password = auth_sheet.cell(index, 2).value
-
-        # Check if the provided password matches the stored password
         if password == stored_password:
             print("\nLogin successful.")
             return True
@@ -70,12 +57,12 @@ def login(username, password):
     except Exception as e:
         print(f"Error during login: {e}")
         return False
-    
 
-    # Function to check if a user exists
 def check_user(username):
+    """
+    Function to check if the user already exists in the Google sheet.
+    """
     try:
-        # Check if username already exists
         usernames = auth_sheet.col_values(1)
         if username in usernames:
             print("Username exists.")
@@ -86,7 +73,6 @@ def check_user(username):
     except Exception as e:
             print(f"Error during user check: {e}")
             return False
-    
 
 def display_welcome_message():
     welcome_message = """
@@ -188,15 +174,14 @@ _...--. |  ,       \\ \\             ,.    `-._     ,  /: '  '  '  ' ' ;;..._
 
 
 def start_game():
+    """
+    Function to start the game - load the story from the JSON file and display the questions, handles user input and displays the result.
+    """
     while True:
-        print("Starting your journey...")
-        # Load the story from the JSON file
+        print("\nStarting your journey...")
         with open('story.json', 'r') as file:
             story = json.load(file)
-        
         paths = story['paths']
-        
-        # Select a path
         print("\nChoose a path to start your journey:")
         print("--------------------")
         print("1. Path of the Ring")
@@ -220,9 +205,7 @@ def start_game():
             start_game()
             break
                 
-        score = 0  # Initialize the score
-        
-        # Display questions based on the selected path
+        score = 0
         for question in questions:
             print(Fore.GREEN + question['question'] + Fore.RESET)
             print("--------------------")
@@ -237,14 +220,14 @@ def start_game():
                     print("You get closer to Mordor!")
                     print("--------------------")
                     display_mordor()
-                    score += 1  # Increment the score for correct answers
+                    score += 1
                 else:
                     print("\nOops! Your choice has led to a setback.")
                     print("You took the wrong path. Would you like to restart the game? (yes/no)")
                     restart_choice = input("> ").lower()
                     if restart_choice == 'yes' or restart_choice == 'no':
                         if restart_choice == 'yes':
-                            break  # Break out of the loop and restart the gamew
+                            break
                         else:
                             print("Thank you for playing!")
                             return
@@ -282,6 +265,9 @@ def start_game():
                 break
 
 def signing():
+    """
+    Function to handle user registration and login.
+    """
     print("\n\nAre you an existing user? (yes/no)")
     existing_user = input("> ").lower()
     if existing_user == "no":
@@ -304,20 +290,16 @@ def signing():
         if login(username, password):
             print("\n\nLogin successful. \nStarting the game...")
             start_game()
-        else: 
+        else:
             print("\nLogin failed. Please try again.")
             signing()
     else:
         print("\nInvalid input. Please enter 'yes' or 'no'.")
         signing()
 
-
-
 def main():
     print("Welcome to Lord of the Rings Quiz!")
     display_welcome_message()
     signing()
-
-
 
 main()
