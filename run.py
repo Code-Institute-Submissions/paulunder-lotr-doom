@@ -220,15 +220,19 @@ def start_game():
                 print("--------------------")
                 display_mordor()
                 score += 1  # Increment the score for correct answers
-            else:
+            elif answer != 'no':
                 print("\nOops! Your choice has led to a setback.")
                 print("You took the wrong path. Would you like to restart the game? (yes/no)")
                 restart_choice = input("> ").lower()
                 if restart_choice == 'yes':
-                    break  # Break out of the loop and restart the gamew
+                    break
                 else:
                     print("Thank you for playing!")
-                    return  # End the game if the player chooses not to restart
+                    return
+            else:
+                print("\nThank you for playing!")
+                signing()
+                return
         
         if score == len(selected_path['questions']):
             print("\nCongratulations! You have successfully completed the journey.")
@@ -262,7 +266,6 @@ def signing():
         else:
             print("\nRegistration failed. Please try again.")
             signing()
-
     elif existing_user == "yes":
         print("\nEnter your username:")
         username = input("> ")
