@@ -207,11 +207,11 @@ def start_game():
             if selected_path == '1':
                 selected_path = paths[0]
                 print(selected_path['questions'])
-                print(selected_path['start'])
+                question_id = selected_path['questions'][0]
             else:
                 selected_path = paths[1]
                 print(selected_path['questions'])
-                print(selected_path['start'])
+                question_id = selected_path['questions'][8]
         else:
             print("Invalid input. Please enter '1' or '2'.")
             print("\n Restarting the game...")
@@ -227,7 +227,11 @@ def start_game():
         
         # Display questions based on the selected path
         for question_id in selected_path['questions']:
-            question = [q for q in questions if q['id'] == question_id][0]
+            if question_id == selected_path['questions'][0]:
+                question_index = 0
+            elif question_id == selected_path['questions'][8]:
+                question_index = 8
+            question = questions[question_index]
             print(Fore.GREEN + question['question'] + Fore.RESET)
             print("--------------------")
             for option in question['options']:
