@@ -249,9 +249,7 @@ def start_game():
 
 def signing():
     print("\n\nAre you an existing user? (yes/no)")
-    existing_user = input("> ")
-
-
+    existing_user = input("> ").lower()
     if existing_user == "no":
         print("\nPlease register to continue.")
         print("\nEnter a username:")
@@ -261,6 +259,10 @@ def signing():
         if register(username, password):
             print("\nRegistration successful. \n\nStarting the game...")
             start_game()
+        else:
+            print("\nRegistration failed. Please try again.")
+            signing()
+
     elif existing_user == "yes":
         print("\nEnter your username:")
         username = input("> ")
@@ -269,6 +271,9 @@ def signing():
         if login(username, password):
             print("\n\nLogin successful. \nStarting the game...")
             start_game()
+        else: 
+            print("\nLogin failed. Please try again.")
+            signing()
     else:
         print("\nInvalid input. Please enter 'yes' or 'no'.")
         signing()
