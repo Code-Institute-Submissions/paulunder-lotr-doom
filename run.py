@@ -261,7 +261,7 @@ def start_game():
                     
                     print("\nWould you like to play again? (yes/no)\n")
                     play_again = input("> ").lower()
-                    if play_again == 'yes' or restart_choice == 'no':
+                    if play_again == 'yes' or play_again == 'no':
                         if play_again != 'yes':
                             print("\nThank you for playing!")
                             break
