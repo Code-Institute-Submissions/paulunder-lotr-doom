@@ -21,9 +21,11 @@ GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('LordOfTheRings')
 auth_sheet = SHEET.worksheet('Auth')
 
+
 def register(username, password):
     """
-    Function to register a new user, checks in the Google sheet if the username already exists.
+    Function to register a new user, checks in the Google 
+    sheet if the username already exists.
     """
     try:
         usernames = auth_sheet.col_values(1)
@@ -37,9 +39,11 @@ def register(username, password):
         print(f"Error during registration: {e}")
         return False
 
+
 def login(username, password):
     """
-    Function to login an existing user, checks in the Google sheet if the username exists and if the password is correct.
+    Function to login an existing user, checks in the Google sheet 
+    if the username exists and if the password is correct.
     """
     try:
         usernames = auth_sheet.col_values(1)
@@ -58,6 +62,7 @@ def login(username, password):
         print(f"Error during login: {e}")
         return False
 
+
 def check_user(username):
     """
     Function to check if the user already exists in the Google sheet.
@@ -73,6 +78,7 @@ def check_user(username):
     except Exception as e:
             print(f"Error during user check: {e}")
             return False
+
 
 def display_welcome_message():
     welcome_message = """
@@ -114,9 +120,9 @@ def display_welcome_message():
         """
     print(welcome_message)
 
+
 def display_mordor():
     mordor_message = """
-                        
                        /\\
         _/\\           /  \\
     _  /   \\         /    \\/\\
@@ -137,6 +143,7 @@ _.-\\ \\/  \\  \\   /  /  \\.-'-._
 
         """
     print(mordor_message)
+
 
 def display_winning_message():
     winning_message = """
@@ -166,16 +173,16 @@ _...--. |  ,       \\ \\             ,.    `-._     ,  /: '  '  '  ' ' ;;..._
 :. . .;)()(__)(___________`-._`-.._______..-'_.-'_________\\'  '  //_:. . .:
 .:.:,' \\/\\/--\\/--------------------------------------------`._',;'`. `.:.:.
 :.,' ,' ,'  ,'  /   /   /   ,-------------------.   \\   \\   \\  `. `.`. `..:
-,' ,'  '   /   /   /   /   //                   \\\\   \\   \\   \\   \\  ` `.SSt
+,' ,'  '   /   /   /   /   //                   \\\\   \\   \\   \\   \\  ` `.
 ,'  '    /   /   /   /   /((  Lord of the Rings  ))\\   \\   \\   \\   \\   `  `
-
         """ 
     print(winning_message)
 
 
 def start_game():
     """
-    Function to start the game - load the story from the JSON file and display the questions, handles user input and displays the result.
+    Function to start the game - load the story from the JSON file and 
+    display the questions, handles user input and displays the result.
     """
     while True:
         print("\nStarting your journey...")
@@ -204,7 +211,6 @@ def start_game():
             print("\n Restarting the game...")
             start_game()
             break
-                
         score = 0
         for question in questions:
             print(Fore.GREEN + question['question'] + Fore.RESET)
@@ -242,7 +248,6 @@ def start_game():
                         display_winning_message()
                     else:
                         print("\n\n\n\nMiddle Earth is burning. You lose.")
-                    
                     print("\nWould you like to play again? (yes/no)\n")
                     play_again = input("> ").lower()
                     if play_again == 'yes' or play_again == 'no':
@@ -254,7 +259,6 @@ def start_game():
                             print("\ntake you back to menu...")
                             signing()
                         break
-                        
                     else:
                         print("Invalid input.")
                         print("\n\n take you back to menu...")
@@ -263,6 +267,7 @@ def start_game():
             else:
                 print("Invalid input. Please enter 'a' or 'b'.")
                 break
+
 
 def signing():
     """
@@ -297,9 +302,11 @@ def signing():
         print("\nInvalid input. Please enter 'yes' or 'no'.")
         signing()
 
+
 def main():
     print("Welcome to Lord of the Rings Quiz!")
     display_welcome_message()
     signing()
+
 
 main()
