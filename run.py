@@ -194,12 +194,10 @@ def start_game():
         if selected_path == '1' or selected_path == '2':
             if selected_path == '1':
                 selected_path = paths[0]
-                print(selected_path['questions'])
                 print(selected_path['start'])
                 questions = story['questions'][0:8]
             else:
                 selected_path = paths[1]
-                print(selected_path['questions'])
                 print(selected_path['start'])
                 questions = story['questions'][8:16]
         else:
