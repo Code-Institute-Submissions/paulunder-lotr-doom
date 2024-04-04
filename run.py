@@ -233,8 +233,8 @@ def start_game():
                             return
                     else:
                         print("Invalid input.")
-                        print("\n\n restarting game...")
-                        break
+                        print("\n\n asking again...")
+                        score -= 1
                 if score == len(selected_path['questions']):
                     print("\nCongratulations! You have successfully completed the journey.")
                     if score > 6:
