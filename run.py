@@ -25,12 +25,16 @@ def register(username, password):
     """
     try:
         usernames = auth_sheet.col_values(1)
-        if username in usernames:
-            print("Username already exists. Please choose a different username.")
+        if username == "" | password == "":
+            print("Username or password cannot be empty.")
             return False
-        auth_sheet.append_row([username, password])
-        print("\nRegistration successful. You can now log in.")
-        return True
+        else:
+            if username in usernames:
+                print("Username already exists. Please choose a different username.")
+                return False
+            auth_sheet.append_row([username, password])
+            print("\nRegistration successful. You can now log in.")
+            return True
     except Exception as e:
         print(f"Error during registration: {e}")
         return False
@@ -233,8 +237,8 @@ def start_game():
                             return
                     else:
                         print("Invalid input.")
-                        print("\n\n asking again...")
-                        score -= 1
+                        print("\n\n restarting game...")
+                        break
                 if score == len(selected_path['questions']):
                     print("\nCongratulations! You have successfully completed the journey.")
                     if score > 6:
