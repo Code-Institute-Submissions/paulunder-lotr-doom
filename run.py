@@ -20,7 +20,7 @@ auth_sheet = SHEET.worksheet('Auth')
 
 def register(username, password):
     """
-    Function to register a new user, checks in the Google 
+    Function to register a new user, checks in the Google
     sheet if the username already exists.
     """
     try:
@@ -30,7 +30,7 @@ def register(username, password):
             return False
         else:
             if username in usernames:
-                print("Username already exists. Please choose a different username.")
+                print("Please choose a different username.")
                 return False
             auth_sheet.append_row([username, password])
             print("\nRegistration successful. You can now log in.")
@@ -42,7 +42,7 @@ def register(username, password):
 
 def login(username, password):
     """
-    Function to login an existing user, checks in the Google sheet 
+    Function to login an existing user, checks in the Google sheet
     if the username exists and if the password is correct.
     """
     try:
@@ -76,8 +76,8 @@ def check_user(username):
             print("Username not found. Please register first.")
             return False
     except Exception as e:
-            print(f"Error during user check: {e}")
-            return False
+        print(f"Error during user check: {e}")
+        return False
 
 
 def display_welcome_message():
@@ -174,14 +174,14 @@ _...--. |  ,       \\ \\             ,.    `-._     ,  /: '  '  '  ' ' ;;..._
 .:.:,' \\/\\/--\\/--------------------------------------------`._',;'`. `.:.:.
 :.,' ,' ,'  ,'  /   /   /   ,-------------------.   \\   \\   \\  `. `.`. `..:
 ,' ,'  '   /   /   /   /   //                   \\\\   \\   \\   \\   \\  ` `.
-,'  '    /   /   /   /   /((  Lord of the Rings  ))\\   \\   \\   \\   \\   `  `
-        """ 
+,'  '    /   /   /   /   /((  Lord of the Rings  ))\\   \\   \\   \\   \\   `
+        """
     print(winning_message)
 
 
 def start_game():
     """
-    Function to start the game - load the story from the JSON file and 
+    Function to start the game - load the story from the JSON file and
     display the questions, handles user input and displays the result.
     """
     while True:
@@ -227,7 +227,7 @@ def start_game():
                     score += 1
                 else:
                     print("\nOops! Your choice has led to a setback.")
-                    print("You took the wrong path. Would you like to restart the game? (yes/no)")
+                    print("You took the wrong path. Restart? (yes/no)")
                     restart_choice = input("> ").lower()
                     if restart_choice == 'yes' or restart_choice == 'no':
                         if restart_choice == 'yes':
@@ -240,7 +240,7 @@ def start_game():
                         print("\n\n restarting game...")
                         break
                 if score == len(selected_path['questions']):
-                    print("\nCongratulations! You have successfully completed the journey.")
+                    print("\nYou have successfully completed the journey.")
                     if score > 6:
                         print("\nYou have saved Middle Earth!\n")
                         display_winning_message()
