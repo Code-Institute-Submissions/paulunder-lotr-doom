@@ -272,8 +272,6 @@ The site was tested on the following devices:
 * Macbook Pro 16" 2023
 * Oneplus 8
 
-####################################################################
-
 ### Validation
 #### PEP8 Python Validator (from Code Institute)
 Code institute's own Python Linter [pep8](https://pep8ci.herokuapp.com/) was used to validate all Python code in this project.
@@ -285,8 +283,6 @@ All code passed with no errors apart from the run.py file where the line limit o
 <img src="docs/validation/CI-validation.png" alt="A screenshot of pep8 validator confirming instructions code.">
 </details>
 <br>
-
-####################################################################
 
 ### Manual Testing
 
