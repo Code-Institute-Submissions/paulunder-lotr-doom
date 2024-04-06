@@ -81,8 +81,6 @@ The user will be presented with a question and if the user answers correctly, th
 When answering all questions correctly, the user will be taken to the end of the game. The user will be presented with a message that they have completed the game and saved middle earth. Now the user can decide to play again.
 </details><br>
 
-####################
-
 ### User Stories
 #### As a first time user...
 (1) Sign up with a username and for the game.
@@ -284,7 +282,7 @@ All code passed with no errors apart from the run.py file where the line limit o
 
 <details>
 <summary>instructions.py</summary>
-<img src="docs/validation/instructions-v.png" alt="A screenshot of pep8 validator confirming instructions code.">
+<img src="docs/validation/CI-validation.png" alt="A screenshot of pep8 validator confirming instructions code.">
 </details>
 <br>
 
