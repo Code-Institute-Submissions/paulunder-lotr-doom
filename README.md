@@ -276,10 +276,10 @@ The site was tested on the following devices:
 #### PEP8 Python Validator (from Code Institute)
 Code institute's own Python Linter [pep8](https://pep8ci.herokuapp.com/) was used to validate all Python code in this project.
 
-All code passed with no errors apart from the run.py file where the line limit of 80 characters had to be exceeded to display the title. These were the only errors that were found in this file.
+All code passed with no errors.
 
 <details>
-<summary>instructions.py</summary>
+<summary>run.py</summary>
 <img src="docs/validation/CI-validation.png" alt="A screenshot of pep8 validator confirming instructions code.">
 </details>
 <br>
