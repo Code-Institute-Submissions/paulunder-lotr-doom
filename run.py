@@ -1,7 +1,7 @@
-import gspread
-from google.oauth2.service_account import Credentials
 import json
 import os
+import gspread
+from google.oauth2.service_account import Credentials
 from colorama import Fore
 
 SCOPE = [
@@ -25,7 +25,7 @@ def register(username, password):
     """
     try:
         usernames = auth_sheet.col_values(1)
-        if username == "" | password == "":
+        if username == "" or password == "":
             print("Username or password cannot be empty.")
             return False
         else:
